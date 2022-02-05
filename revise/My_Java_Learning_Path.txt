@@ -1,0 +1,397 @@
+The learning path of our Java coding.
+
+  We wrote our first program with just a message in the form of String being displayed on the console.
+
+
+         public class EmployeeMain {
+
+            public static void main(String args[]) {
+             System.out.println("I am an Employee");
+       
+           }
+        }
+
+  Observations:-
+    As per my C programming knowledge goes I can understand that a main method is there but
+    here the main method is within a class and main method is preceeded with some keywords
+    which are public and static. I can even see the return type as void but I am not sure
+    whether I can even have int as return type as in C. I can even see something passed as
+    a parameter to main. I am not sure what it is? I am not able to see even printf function
+    but can relate that System.out.println is doing similar kind of task.
+
+  So let us make you doubt free.
+
+   * In Java,  main method needs to be within a class. We cannot write main without a class.
+   * public with main is because we want to make main to be accessed outside the class.
+   * In java main can have only void as return type.
+   * String args[] is basically ----> array of strings to hold the values passed from 
+     command line. Which means while executing my Java program I may pass some arguments 
+     from command line like.
+     java EmployeeMain Jammy Nitin 
+     and if we replace the line of System.out.println("I am an Employee");
+     with System.out.println("I said Hi to "+args.length+"to employees "+args[0]+" and "+args[1]);
+
+         public class EmployeeMain2 {
+
+            public static void main(String args[]) {
+            System.out.println("I said Hi to "+args.length+" employees "+args[0]+" and "+args[1]);
+       
+           }
+        }
+    The output will be 
+    I said Hi to 2 employees Jammy and Nitin
+   * String  and System are predefined classes and are part of Java API ( Application Programming           Interface which means a library of classes and interfaces in java). As java is case sensitive
+     we cannot afford writing these classes in any other case. We will get compilation error.
+     We have a convention which is must for predefined classes that identifier for a class should
+     start with uppercase followed by smallcase characters. If a class name consists of multiple
+     words, every first character should be in uppercase. Example Employee, EmployeeDetails.
+     Though we can write user defined classes in any case , the code will compile but we
+     need to be careful with predefined classes. If we are not following the convention for predefined
+     classes, we get compilation error. So let us follow the convention.
+   * Here public,class and void are keywords and keywords are reserved words for the compiler.
+   * out is an object of PrintStream ( predefined class in Java API) class.
+   * out is is declared within System class.
+   * println is a method of PrintStream class. We have print method also. The difference is println
+     will take the cursor to the new line after printing and print keeps the cursor in the same line
+     and if we have so more printing to be done , that is printed at the same line where the previous 
+     print took place.
+-------------------------------------------------------------------------------------------------
+I want to learn some more. As per C knowledge we used to have variables. So can we declare
+variables in Java for storing empId, name, designation and basic.
+Ans: Yes we can
+
+    package xyzcompany.demo1;
+    public class Employee {
+      public static void main (String args[]) {
+           String empId="E0001";
+           String empName="Jammy";
+           String designation="Manager";
+           int basic=30000;
+           System.out.println("The details are");
+           System.out.println("Employee Id:"+empId);
+           System.out.println("Employee Name: "+empName);
+           System.out.println("Employee's designation: "+designation);
+           System.out.println("Employee's basic: "+basic);
+        }
+    }
+  Observations:
+     I can see some differences from the previous program. I can see package followed by xyzcompany.demo
+     Also can see String though it was there in the previous code as main method's parameter datatype. In           C to store a data like name and designation we used to declare array of char
+     as char name[20], char designation[30] which I am unable to see and can relate that
+     somewhere it is doing the task of character array of C. I can even see + in System.out.println 
+     which I have not used in C programming during printing. I can see empName is following some
+     notation , I am not sure what it is called.
+
+  Here are the points to clarify your doubts:
+
+     * package is again a keyword used to logically group classes. package declaration should be
+       the first statement if we are keeping class within a package. xyzcompany is a package name
+       and demo is subpackage of xyzcompany package name. The convention of package name is   
+       entirely written in smallcase.
+     * To store a group of characters in java we create object of String class and no longer 
+       require character array though in Java also we can declare a character array and use.
+     * + is an operator to append something with String. Example.
+    
+       int marks=100;
+       System.out.println("The marks is "+marks);
+       So here the variable marks which is an int is appended to a String "The marks is" and marks
+       also get converted into a String.
+       Don't write 
+       System.out.println("The marks is marks"); It will print
+       The marks is marks.
+       In that case marks is not considered as variable and is printed as such.
+     * variable name and method name follows Camel notation.
+       [Camel Notation- In this naming convention first character of all words, except the first word are upper        case and other characters are lowercase.]
+-------------------------------------------------------------------------------------------------
+
+I am happy to see the first 2 codes. But I find only one function main and everything is done with 
+main. So can we write something more like main. In C we can write multiple functions. I want 
+something similar to that.
+ans: yes we can do that in Java also.
+
+    package xyzcompany.demo2;
+    public class Employee {
+
+      public static void employeeDetails() {
+           String empId="E0001";
+           String empName="Jammy";
+           String designation="Manager";
+           int basic=30000;
+           System.out.println("The details are");
+           System.out.println("Employee Id:"+empId);
+           System.out.println("Employee Name: "+empName);
+           System.out.println("Employee's designation: "+designation);
+           System.out.println("Employee's basic: "+basic);
+      }
+       
+      public static void main (String args[]) {
+           employeeDetails();
+        }
+    }
+ Observation: Yes I find something similar to C programming but why static with add and even
+ with main.
+
+ Good to see you are able to relate. Let us understand the code.
+ * main needs to be declared as static(We will talk about static in our future concepts).
+ But currently you have to remember that a static members can access other static members only.
+ If we want to access non static from static block , we have to declare the object for the 
+ class where non static method is and then access. We will see how it is possible in our
+ future codes.
+
+-------------------------------------------------------------------------------------------------
+Okie I was thinking it will be very tough to learn Java but I am able to relate. 
+So further can we plan for two separate methods , one for storing the data  and next for display. 
+ans: Yes we can. 
+
+package xyzcompany.demo3;
+    public class Employee {
+
+      public static void employeeDetails() {
+           String empId="E0001";
+           String empName="Jammy";
+           String designation="Manager";
+           int basic=30000;
+           displayData(empId,empName,designation,basic);        
+      }
+     
+      public static void displayData(String id, String name, String desig , int bsc){
+           System.out.println("The details are");
+           System.out.println("Employee Id:"+id);
+           System.out.println("Employee Name: "+name);
+           System.out.println("Employee's designation: "+design);
+           System.out.println("Employee's basic: "+bsc);
+     }
+       
+      public static void main (String args[]) {
+           employeeDetails();
+        }
+    }
+Observation:-
+ Ohh!!! it seems like function call chain. main calling employeeDetails and employeeDetails calling
+displayData. I can see that displayData is with parameters. I can see that the parameter names
+are not same as arguments name. So can we keep them with the same name?
+
+Ans: Yes arguments are parameters name can be same. So the following code is also good to go 
+with. 
+
+package xyzcompany.demo4;
+    public class Employee {
+
+      public static void employeeDetails() {
+           String empId="E0001";
+           String empName="Jammy";
+           String designation="Manager";
+           int basic=30000;
+           displayData(empId,empName,designation,basic);        
+      }
+     
+      public static void displayData(String empId, String empName, String designation , int basic){
+           System.out.println("The details are");
+           System.out.println("Employee Id:"+empId);
+           System.out.println("Employee Name: "+empName);
+           System.out.println("Employee's designation: "+designation);
+           System.out.println("Employee's basic: "+basic);
+     }
+       
+      public static void main (String args[]) {
+           employeeDetails();
+        }
+    }
+
+arguments and parameters are with different local scope. Ohh I missed talking about local variable.
+The variables which are defined within a method are called local variables. 
+So empId, empName, designation and basic are local to displayEmployeeDetails. 
+We have again empId, empName , designation and basic declared in displayData. 
+These are totally new declaration and local to displayData and are not same
+empId , empName , designation and basic of employeeDetails method.
+----------------------------------------------------------------------------------------------------
+
+Okie got it!!!! So In the previous code I am not liking the local variables so much because they
+are restricted to the method and even not accessible across the methods of the same class
+until unless we pass them as arguments. I was trying to look something like global variables in
+C which were accessible across multiple functions.
+
+ans: Yes we can have similar concept. If we declare the variables as member of the class which
+is called member variable or instance variable or attributes or properties of a class.
+
+ package xyzcompany.demo5;
+    public class Employee {
+     static String empId;
+     static String empName;
+     static String designation;
+     static int basic;
+
+      public static void setData() {
+           empId="E0001";
+           empName="Jammy";
+           designation="Manager";
+           basic=30000;
+           displayData();        
+      }
+     
+      public static void displayData(){
+           System.out.println("The details are");
+           System.out.println("Employee Id:"+empId);
+           System.out.println("Employee Name: "+empName);
+           System.out.println("Employee's designation: "+designation);
+           System.out.println("Employee's basic: "+basic);
+     }
+       
+      public static void main (String args[]) {
+           setData();
+           displayData();
+        }
+    }
+
+
+ Oh!!! the code looks something better than before as I don't have to pass parameters to 
+displayData method. Now it can be directly called from main after call to setData(). 
+but ya still it can be called from setData(). This is much better because we have the 
+flexibility of calling methods. It may happen that we don't want to call displayData().
+In the previous code I was bound to call displayData() from employeeDetails().
+But I am not comfortable with static as I don't know much about static so can't we
+totally get rid of static modifier in the code.
+
+Ans: Good suggestion. But we have to use static with main otherwise the Java runtime
+won't take it as main which is meant for the entrypoint of the code because it has
+no other way to call the main method which will be clear when we discuss static 
+modifier in length. But yes we can remove static from rest of the methods and 
+member variables.
+
+ package xyzcompany.demo6;
+     public class Employee {
+     public String empId;
+     public String empName;
+     public String designation;
+     public int basic;
+
+      public void setData() {
+           empId="E0001";
+           empName="Jammy";
+           designation="Manager";
+           basic=30000;
+           displayData();        
+      }
+     
+      public void displayData(){
+           System.out.println("The details are");
+           System.out.println("Employee Id:"+empId);
+           System.out.println("Employee Name: "+empName);
+           System.out.println("Employee's designation: "+designation);
+           System.out.println("Employee's basic: "+basic);
+     }
+       
+      public static void main (String args[]) {
+           Employee employee=new Employee();           
+           employee.setData();
+           employee.displayData();
+        }
+    }
+
+Now it is better but new changes and addition in code I can see.  Employee employee=new Employee();
+I have never seen these kind of syntax in C.
+
+Yes , you have not seen but similar concept was there also. I suppose you have used malloc and
+calloc for dynamic memory allocation.
+Let us break the statement
+Employee employee=new Employee() into 2 lines
+Employee employee; This line means we are declaring reference of Employee type/data type.
+Employee is a class and it is a user defined class. 
+employee=new Employee(); new Employee() is creating a new Employee object and the address/reference
+of newly created object is assigned to the reference variable employee. So previously we discussed
+that static member can access non static member after creating the object of the class where 
+the methods are. So now we have done the same. First we created an object of Employee and then we
+called the setData and displayData which are now non static method.
+-------------------------------------------------------------------------------------------
+I am very excited as I am learning new things. I can see the access specifier public used
+to declare the member variables and methods both. As per my understanding the member declared
+as public can be accessed outside the class. I know this even that member variables are
+data which needs to kept secured and hidden from other classes. So do we have something 
+called private?
+
+ans: You are correct. Yes we should declare the member variables as private and restrict 
+direct access of the variables outside the class. But there is no rule as such that always 
+member variables are private  and member methods are public.
+Depending on the requirement we can make the variables as public and method as private.
+
+package xyzcompany.demo7;
+     public class Employee {
+     private String empId;
+     private String empName;
+     private String designation;
+     private int basic;
+
+      public void setData() {
+           empId="E0001";
+           empName="Jammy";
+           designation="Manager";
+           basic=30000;
+           displayData();        
+      }
+     
+      public void displayData(){
+           System.out.println("The details are");
+           System.out.println("Employee Id:"+empId);
+           System.out.println("Employee Name: "+empName);
+           System.out.println("Employee's designation: "+designation);
+           System.out.println("Employee's basic: "+basic);
+     }
+       
+      public static void main (String args[]) {
+           Employee employee=new Employee();           
+           employee.setData();
+           employee.displayData();
+        }
+    }
+
+It looks much better and find it somewhat different from C programming.
+
+ans: Yes, this approach is called Object Oriented Approach of programming.
+
+---------------------------------------------------------------------------------------
+So can we make it more modular by making some more classes. I want main method to be in different 
+class.
+
+ans Yes we can do that.
+
+ 
+package xyzcompany.demo8;
+     public class Employee {
+     private String empId;
+     private String empName;
+     private String designation;
+     private int basic;
+
+      public void setData() {
+           empId="E0001";
+           empName="Jammy";
+           designation="Manager";
+           basic=30000;
+           displayData();        
+      }
+     
+      public void displayData(){
+           System.out.println("The details are");
+           System.out.println("Employee Id:"+empId);
+           System.out.println("Employee Name: "+empName);
+           System.out.println("Employee's designation: "+designation);
+           System.out.println("Employee's basic: "+basic);
+     }
+       
+    
+    }
+
+---------------------------------------------
+package xyzcompany.demo8;
+   public class EmployeeMain {
+     public static void main (String args[]) {
+           Employee employee=new Employee();           
+           employee.setData();
+           employee.displayData();
+        }
+   }
+-------------------------------------------------------------------------------------------
+So are we going to keep both the classes in same file say Employee.java.
+ans: No. We cannot have two public classes in a single file. So we have to plan EmployeeMain.java
+and Employee.java. If we try to keep two public classes in same file, it will show compilation error.
+----------------------------------------------------------------------------------------------------------
